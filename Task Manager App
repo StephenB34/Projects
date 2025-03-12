@@ -1,0 +1,255 @@
+/*
+TaskList 
+*/
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+
+public class TaskList extends JFrame{
+JLabel lblTitle, lblList1;
+JButton btn1, btn2, btn3, btn4, btn5, btn6;
+JTextField txt1, txt2, txt3, txt4, txt5, txt6;
+boolean
+	isGreen1 = false,
+	isGreen2 = false,
+	isGreen3 = false,
+	isGreen4 = false,
+	isGreen5 = false,
+	isGreen6 = false;
+
+	public TaskList() {
+		super("TaskList");
+		setLayout(null);
+		setSize(960,540);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+
+        init();
+	}
+	
+	public void init() {
+		/*
+		lblTitle = new JLabel("Intro");
+		lblTitle.setBounds(380,170,200,200); // x pos, y pos, x size, y size
+		lblTitle.setFont(new Font("Verdana",Font.PLAIN,36)); // Text Font
+		lblTitle.setForeground(new Color(0,0,0)); // Text Color
+		lblTitle.setHorizontalAlignment(SwingConstants.CENTER); // Text Alignment
+		lblTitle.setVerticalAlignment(SwingConstants.CENTER); // Text Alignment
+		lblTitle.setBackground(new Color(200,200,255)); // Background (Box) Color
+		lblTitle.setOpaque(true); // Makes Background Visible
+		add(lblTitle);
+		*/
+		
+		lblList1 = new JLabel("List 1");
+		lblList1.setBounds(5,5,300,50);
+		lblList1.setFont(new Font("Verdana",Font.PLAIN,24)); // Text Font
+		lblList1.setForeground(new Color(0,0,0)); // Text Color
+		lblList1.setHorizontalAlignment(SwingConstants.CENTER); // Text Alignment
+		lblList1.setVerticalAlignment(SwingConstants.CENTER); // Text Alignment
+		lblList1.setBackground(new Color(150,225,225));
+		lblList1.setOpaque(true);
+		add(lblList1);
+		
+		
+		txt1 = new JTextField("Enter Task");
+		txt1.setBounds(5,55,200,50);
+		txt1.setFont(new Font("Verdana",Font.PLAIN,18)); // Text Font
+		txt1.setForeground(new Color(0,0,0)); // Text Color
+		//txt1.setHorizontalAlignment(SwingConstants.CENTER); // Text Alignment
+		//txt1.setVerticalAlignment(SwingConstants.CENTER); // Text Alignment
+		txt1.setBackground(new Color(255,150,150));
+		txt1.setOpaque(true);
+		add(txt1);
+		
+		
+		btn1 = new JButton("Done");
+		btn1.setBounds(205,55,100,50);
+		btn1.setFont(new Font("Verdana",Font.PLAIN,18)); // Text Font
+		btn1.setForeground(new Color(0,0,0)); // Text Color
+		//txt1.setHorizontalAlignment(SwingConstants.CENTER); // Text Alignment
+		//txt1.setVerticalAlignment(SwingConstants.CENTER); // Text Alignment
+		btn1.setBackground(new Color(200,200,200));
+		btn1.setOpaque(true);
+		btn1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if (isGreen1) {
+						txt1.setBackground(new Color(255,150,150));
+					} else {
+						txt1.setBackground(new Color(150,255,150));
+					}
+					isGreen1 = !isGreen1;
+				}
+		});
+		add(btn1);
+		
+		
+		txt2 = new JTextField("Enter Task");
+		txt2.setBounds(5,105,200,50);
+		txt2.setFont(new Font("Verdana",Font.PLAIN,18)); // Text Font
+		txt2.setForeground(new Color(0,0,0)); // Text Color
+		//txt1.setHorizontalAlignment(SwingConstants.CENTER); // Text Alignment
+		//txt1.setVerticalAlignment(SwingConstants.CENTER); // Text Alignment
+		txt2.setBackground(new Color(255,150,150));
+		txt2.setOpaque(true);
+		add(txt2);
+		
+		
+		btn2 = new JButton("Done");
+		btn2.setBounds(205,105,100,50);
+		btn2.setFont(new Font("Verdana",Font.PLAIN,18)); // Text Font
+		btn2.setForeground(new Color(0,0,0)); // Text Color
+		//txt1.setHorizontalAlignment(SwingConstants.CENTER); // Text Alignment
+		//txt1.setVerticalAlignment(SwingConstants.CENTER); // Text Alignment
+		btn2.setBackground(new Color(200,200,200));
+		btn2.setOpaque(true);
+		btn2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if (isGreen2) {
+						txt2.setBackground(new Color(255,150,150));
+					} else {
+						txt2.setBackground(new Color(150,255,150));
+					}
+					isGreen2 = !isGreen2;
+				}
+		});
+		add(btn2);
+		
+		
+		txt3 = new JTextField("Enter Task");
+		txt3.setBounds(5,155,200,50);
+		txt3.setFont(new Font("Verdana",Font.PLAIN,18)); // Text Font
+		txt3.setForeground(new Color(0,0,0)); // Text Color
+		//txt1.setHorizontalAlignment(SwingConstants.CENTER); // Text Alignment
+		//txt1.setVerticalAlignment(SwingConstants.CENTER); // Text Alignment
+		txt3.setBackground(new Color(255,150,150));
+		txt3.setOpaque(true);
+		add(txt3);
+		
+		
+		btn3 = new JButton("Done");
+		btn3.setBounds(205,155,100,50);
+		btn3.setFont(new Font("Verdana",Font.PLAIN,18)); // Text Font
+		btn3.setForeground(new Color(0,0,0)); // Text Color
+		//txt1.setHorizontalAlignment(SwingConstants.CENTER); // Text Alignment
+		//txt1.setVerticalAlignment(SwingConstants.CENTER); // Text Alignment
+		btn3.setBackground(new Color(200,200,200));
+		btn3.setOpaque(true);
+		btn3.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if (isGreen3) {
+						txt3.setBackground(new Color(255,150,150));
+					} else {
+						txt3.setBackground(new Color(150,255,150));
+					}
+					isGreen3 = !isGreen3;
+				}
+		});
+		add(btn3);
+		
+		
+		txt4 = new JTextField("Enter Task");
+		txt4.setBounds(5,205,200,50);
+		txt4.setFont(new Font("Verdana",Font.PLAIN,18)); // Text Font
+		txt4.setForeground(new Color(0,0,0)); // Text Color
+		//txt1.setHorizontalAlignment(SwingConstants.CENTER); // Text Alignment
+		//txt1.setVerticalAlignment(SwingConstants.CENTER); // Text Alignment
+		txt4.setBackground(new Color(255,150,150));
+		txt4.setOpaque(true);
+		add(txt4);
+		
+		
+		btn4 = new JButton("Done");
+		btn4.setBounds(205,205,100,50);
+		btn4.setFont(new Font("Verdana",Font.PLAIN,18)); // Text Font
+		btn4.setForeground(new Color(0,0,0)); // Text Color
+		//txt1.setHorizontalAlignment(SwingConstants.CENTER); // Text Alignment
+		//txt1.setVerticalAlignment(SwingConstants.CENTER); // Text Alignment
+		btn4.setBackground(new Color(200,200,200));
+		btn4.setOpaque(true);
+		btn4.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if (isGreen4) {
+						txt4.setBackground(new Color(255,150,150));
+					} else {
+						txt4.setBackground(new Color(150,255,150));
+					}
+					isGreen4 = !isGreen4;
+				}
+		});
+		add(btn4);
+		
+		
+		txt5 = new JTextField("Enter Task");
+		txt5.setBounds(5,255,200,50);
+		txt5.setFont(new Font("Verdana",Font.PLAIN,18)); // Text Font
+		txt5.setForeground(new Color(0,0,0)); // Text Color
+		//txt1.setHorizontalAlignment(SwingConstants.CENTER); // Text Alignment
+		//txt1.setVerticalAlignment(SwingConstants.CENTER); // Text Alignment
+		txt5.setBackground(new Color(255,150,150));
+		txt5.setOpaque(true);
+		add(txt5);
+		
+		
+		btn5 = new JButton("Done");
+		btn5.setBounds(205,255,100,50);
+		btn5.setFont(new Font("Verdana",Font.PLAIN,18)); // Text Font
+		btn5.setForeground(new Color(0,0,0)); // Text Color
+		//txt1.setHorizontalAlignment(SwingConstants.CENTER); // Text Alignment
+		//txt1.setVerticalAlignment(SwingConstants.CENTER); // Text Alignment
+		btn5.setBackground(new Color(200,200,200));
+		btn5.setOpaque(true);
+		btn5.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if (isGreen5) {
+						txt5.setBackground(new Color(255,150,150));
+					} else {
+						txt5.setBackground(new Color(150,255,150));
+					}
+					isGreen5 = !isGreen5;
+				}
+		});
+		add(btn5);
+		
+		
+		txt6 = new JTextField("Enter Task");
+		txt6.setBounds(5,305,200,50);
+		txt6.setFont(new Font("Verdana",Font.PLAIN,18)); // Text Font
+		txt6.setForeground(new Color(0,0,0)); // Text Color
+		//txt1.setHorizontalAlignment(SwingConstants.CENTER); // Text Alignment
+		//txt1.setVerticalAlignment(SwingConstants.CENTER); // Text Alignment
+		txt6.setBackground(new Color(255,150,150));
+		txt6.setOpaque(true);
+		add(txt6);
+		
+		
+		btn6 = new JButton("Done");
+		btn6.setBounds(205,305,100,50);
+		btn6.setFont(new Font("Verdana",Font.PLAIN,18)); // Text Font
+		btn6.setForeground(new Color(0,0,0)); // Text Color
+		//txt1.setHorizontalAlignment(SwingConstants.CENTER); // Text Alignment
+		//txt1.setVerticalAlignment(SwingConstants.CENTER); // Text Alignment
+		btn6.setBackground(new Color(200,200,200));
+		btn6.setOpaque(true);
+		btn6.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if (isGreen6) {
+						txt6.setBackground(new Color(255,150,150));
+					} else {
+						txt6.setBackground(new Color(150,255,150));
+					}
+					isGreen6 = !isGreen6;
+				}
+		});
+		add(btn6);
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		TaskList TaskList = new TaskList();
+		System.out.println("Opening Application");
+	}
+
+}
