@@ -1,0 +1,182 @@
+/*
+ToDoList.java
+*/
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import java.util.ArrayList;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class ToDoList extends JFrame{
+JLabel lblTitle, lblList1;
+JButton btn1, btnNew, btnDel, btnSave;
+JTextField txt1;
+ArrayList<JTextField> txts = new ArrayList<JTextField>();
+ArrayList<JButton> donebtns = new ArrayList<JButton>();
+ArrayList<JButton> delbtns = new ArrayList<JButton>();
+boolean
+  isGreen1 = false;
+
+  public ToDoList() {
+    super("ToDoList");
+    setLayout(null);
+    setSize(500,500);
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setVisible(true);
+
+    init();
+  }
+
+  public void init() {
+    
+    lblList1 = new JLabel("To-Do List");
+    lblList1.setBounds(5,5,300,50);
+    lblList1.setFont(new Font("Verdana",Font.PLAIN,24)); // Text Font
+    lblList1.setForeground(new Color(0,0,0)); // Text Color
+    lblList1.setHorizontalAlignment(SwingConstants.CENTER); // Text Alignment
+    lblList1.setVerticalAlignment(SwingConstants.CENTER); // Text Alignment
+    lblList1.setBackground(new Color(100,215,215));
+    lblList1.setOpaque(true);
+    add(lblList1);
+
+    txt1 = new JTextField("Enter Task");
+    txt1.setBounds(5,55,200,50);
+    txt1.setFont(new Font("Verdana",Font.PLAIN,18)); 
+    txt1.setForeground(new Color(0,0,0)); 
+    txt1.setBackground(new Color(255,150,150));
+    txt1.setOpaque(true);
+    add(txt1);
+
+    btn1 = new JButton("Done");
+    btn1.setBounds(205,55,100,50);
+    btn1.setFont(new Font("Verdana",Font.PLAIN,18)); 
+    btn1.setForeground(new Color(0,0,0)); 
+    btn1.setBackground(new Color(200,200,200));
+    btn1.setOpaque(true);
+    btn1.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+          if (isGreen1) {
+            txt1.setBackground(new Color(255,150,150));
+          } else {
+            txt1.setBackground(new Color(150,255,150));
+          }
+          isGreen1 = !isGreen1;
+        }
+    });
+    add(btn1);
+
+    btnNew = new JButton("Add New Task");
+    btnNew.setBounds(305,5,180,50);
+    btnNew.setFont(new Font("Verdana",Font.PLAIN,18)); 
+    btnNew.setForeground(new Color(0,0,0)); 
+    btnNew.setBackground(new Color(200,200,200));
+    btnNew.setOpaque(true);
+    btnNew.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e){
+            int ypos = 105;
+
+            JTextField newTask = new JTextField("Enter Task");
+            newTask.setBounds(5, ypos + txts.size() * 50, 200, 50);
+            newTask.setFont(new Font("Verdana", Font.PLAIN, 18));
+            newTask.setForeground(new Color(0,0,0));
+            newTask.setBackground(new Color(255,150,150));
+            newTask.setOpaque(true);
+
+            JButton newBtn = new JButton("Done");
+            newBtn.setBounds(205, ypos + txts.size() * 50, 100, 50);
+            newBtn.setFont(new Font("Verdana", Font.PLAIN, 18));
+            newBtn.setForeground(new Color(0,0,0));
+            newBtn.setBackground(new Color(200,200,200));
+            newBtn.setOpaque(true);
+
+            JButton delBtn = new JButton("Delete Task");
+            delBtn.setBounds(305, ypos + txts.size() * 50, 180, 50);
+            delBtn.setFont(new Font("Verdana", Font.PLAIN, 18));
+            delBtn.setForeground(new Color(0,0,0));
+            delBtn.setBackground(new Color(200,200,200));
+            delBtn.setOpaque(true);
+
+            newBtn.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e){
+                    if (newTask.getBackground().equals(new Color(150,255,150))) {
+                        newTask.setBackground(new Color(255,150,150));
+                    } else {
+                        newTask.setBackground(new Color(150,255,150));
+                    }
+                }
+            });
+
+            delBtn.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e){
+                    int x = txts.indexOf(newTask);
+                    
+                    remove(newTask);
+                    remove(donebtns.get(x));
+                    remove(delbtns.get(x));
+
+                    txts.remove(x);
+                    donebtns.remove(x);
+                    delbtns.remove(x);
+
+                    for (int i = x; i < txts.size(); i++){
+                        txts.get(i).setBounds(5, ypos + i * 50, 200, 50);
+                        donebtns.get(i).setBounds(205, ypos + i * 50, 100, 50);
+                        delbtns.get(i).setBounds(305, ypos + i * 50, 180, 50);
+                    }
+                    
+                    repaint();
+                }
+            });
+            
+            txts.add(newTask);
+            donebtns.add(newBtn);
+            delbtns.add(delBtn);
+            add(newTask);
+            add(newBtn);
+            add(delBtn);
+
+            repaint();
+        }
+    });
+    add(btnNew);
+
+    btnSave = new JButton("Save");
+    btnSave.setBounds(305,55,180,50);
+    btnSave.setFont(new Font("Verdana",Font.PLAIN,18));
+    btnSave.setForeground(new Color(0,0,0));
+    btnSave.setBackground(new Color(200,200,200));
+    btnSave.setOpaque(true);
+    /*
+    btnSave.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            
+            try {
+                FileWriter f1 = new FileWriter("todo_list.csv", true);
+                f1.write(txt1.getText()+ ",");
+                for (int i = 0; i < txts.size(); i++) {
+                    f1.write(txts.get(i).getText()+",");
+                }
+                f1.write("\n");
+                f1.close();
+            } catch (IOException ex) {
+                System.out.println("Error saving to file");
+            }
+        } 
+    });
+    */
+    add(btnSave);
+   
+  }
+
+  public static void main(String[] args) {
+    
+    ToDoList ToDoList = new ToDoList();
+    System.out.println("Opening Application");
+  }
+
+}
