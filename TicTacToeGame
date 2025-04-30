@@ -1,0 +1,468 @@
+/*
+TicTacToe.java
+
+*/
+
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class TicTacToe extends JFrame {
+    // members:
+    JButton btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnReset;
+    JLabel lblResult, lblTurn, lbl1, lbl2, lbl3, lbl4, lbl5, lbl6, lbl7, lbl8, lbl9;
+    String turn = "X";
+    String[][] board = new String[3][3];
+    int plays = 0;
+    boolean gameWon = false;
+
+
+    // Constructors:
+    public TicTacToe(){
+        super("Tic Tac Toe");
+        setLayout(null);
+        setSize(600,600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+      
+        init();
+    }
+
+    private void init(){
+        // make board
+        lblTurn = new JLabel("Player X's turn");
+        lblTurn.setBounds(200, 10, 200, 50);
+        lblTurn.setFont(new Font("Verdana",Font.PLAIN,24));
+        lblTurn.setForeground(Color.BLACK);
+        lblTurn.setHorizontalAlignment(JLabel.CENTER);
+        lblTurn.setVerticalAlignment(JLabel.CENTER);
+        lblTurn.setOpaque(true);
+        
+        add(lblTurn);
+
+        
+        
+        btn1 = new JButton("Play Here");
+        btn1.setBounds(75,150,150,75);
+        btn1.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                if (turn == "X"){
+                    lbl1.setText("X");
+                    turn = "O";
+                    lblTurn.setText("Player O's turn");
+                } else if (turn == "O"){
+                    lbl1.setText("O");
+                    turn = "X";
+                    lblTurn.setText("Player X's turn");
+                }
+                CheckWinner();
+                if (!gameWon) {
+                    plays++;
+                    if (plays >= 9) {
+                        lblTurn.setText("Game Over");
+                        DisableAll();
+                    }
+                }
+
+            }
+        });
+        add(btn1);
+
+        lbl1 = new JLabel("1");
+        lbl1.setBounds(75,75,150,75);
+        lbl1.setFont(new Font("Verdana",Font.PLAIN,24));
+        lbl1.setForeground(Color.BLACK);
+        lbl1.setHorizontalAlignment(JLabel.CENTER);
+        lbl1.setVerticalAlignment(JLabel.CENTER);
+        lbl1.setOpaque(true);
+        add(lbl1);
+
+      
+        btn2 = new JButton("Play Here");
+        btn2.setBounds(225,150,150,75);
+        btn2.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                if (turn == "X"){
+                    lbl2.setText("X");
+                    turn = "O";
+                    lblTurn.setText("Player O's turn");
+                } else if (turn == "O"){
+                    lbl2.setText("O");
+                    turn = "X";
+                    lblTurn.setText("Player X's turn");
+                }
+                CheckWinner();
+                if (!gameWon) {
+                    plays++;
+                    if (plays >= 9) {
+                        lblTurn.setText("Game Over");
+                        DisableAll();
+                    }
+                }
+
+            }
+        });
+        add(btn2);
+
+        lbl2 = new JLabel("2");
+        lbl2.setBounds(225,75,150,75);
+        lbl2.setFont(new Font("Verdana",Font.PLAIN,24));
+        lbl2.setForeground(Color.BLACK);
+        lbl2.setHorizontalAlignment(JLabel.CENTER);
+        lbl2.setVerticalAlignment(JLabel.CENTER);
+        lbl2.setOpaque(true);
+        add(lbl2);
+
+      
+        btn3 = new JButton("Play Here");
+        btn3.setBounds(375,150,150,75);
+        btn3.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                if (turn == "X"){
+                    lbl3.setText("X");
+                    turn = "O";
+                    lblTurn.setText("Player O's turn");
+                } else if (turn == "O"){
+                    lbl3.setText("O");
+                    turn = "X";
+                    lblTurn.setText("Player X's turn");
+                }
+                CheckWinner();
+                if (!gameWon) {
+                    plays++;
+                    if (plays >= 9) {
+                        lblTurn.setText("Game Over");
+                        DisableAll();
+                    }
+                }
+
+            }
+        });
+        add(btn3);
+
+        lbl3 = new JLabel("3");
+        lbl3.setBounds(375,75,150,75);
+        lbl3.setFont(new Font("Verdana",Font.PLAIN,24));
+        lbl3.setForeground(Color.BLACK);
+        lbl3.setHorizontalAlignment(JLabel.CENTER);
+        lbl3.setVerticalAlignment(JLabel.CENTER);
+        lbl3.setOpaque(true);
+        add(lbl3);
+
+
+      
+        btn4 = new JButton("Play Here");
+        btn4.setBounds(75,300,150,75);
+        btn4.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                if (turn == "X"){
+                    lbl4.setText("X");
+                    turn = "O";
+                    lblTurn.setText("Player O's turn");
+                } else if (turn == "O"){
+                    lbl4.setText("O");
+                    turn = "X";
+                    lblTurn.setText("Player X's turn");
+                }
+                CheckWinner();
+                if (!gameWon) {
+                    plays++;
+                    if (plays >= 9) {
+                        lblTurn.setText("Game Over");
+                        DisableAll();
+                    }
+                }
+
+            }
+        });
+        add(btn4);
+
+        lbl4 = new JLabel("4");
+        lbl4.setBounds(75,225,150,75);
+        lbl4.setFont(new Font("Verdana",Font.PLAIN,24));
+        lbl4.setForeground(Color.BLACK);
+        lbl4.setHorizontalAlignment(JLabel.CENTER);
+        lbl4.setVerticalAlignment(JLabel.CENTER);
+        lbl4.setOpaque(true);
+        add(lbl4);
+
+
+        btn5 = new JButton("Play Here");
+        btn5.setBounds(225,300,150,75);
+        btn5.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                if (turn == "X"){
+                    lbl5.setText("X");
+                    turn = "O";
+                    lblTurn.setText("Player O's turn");
+                } else if (turn == "O"){
+                    lbl5.setText("O");
+                    turn = "X";
+                    lblTurn.setText("Player X's turn");
+                }
+                CheckWinner();
+                if (!gameWon) {
+                    plays++;
+                    if (plays >= 9) {
+                        lblTurn.setText("Game Over");
+                        DisableAll();
+                    }
+                }
+
+            }
+        });
+        add(btn5);
+
+        lbl5 = new JLabel("5");
+        lbl5.setBounds(225,225,150,75);
+        lbl5.setFont(new Font("Verdana",Font.PLAIN,24));
+        lbl5.setForeground(Color.BLACK);
+        lbl5.setHorizontalAlignment(JLabel.CENTER);
+        lbl5.setVerticalAlignment(JLabel.CENTER);
+        lbl5.setOpaque(true);
+        add(lbl5);
+
+
+        btn6 = new JButton("Play Here");
+        btn6.setBounds(375,300,150,75);
+        btn6.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                if (turn == "X"){
+                    lbl6.setText("X");
+                    turn = "O";
+                    lblTurn.setText("Player O's turn");
+                } else if (turn == "O"){
+                    lbl6.setText("O");
+                    turn = "X";
+                    lblTurn.setText("Player X's turn");
+                }
+                CheckWinner();
+                if (!gameWon) {
+                    plays++;
+                    if (plays >= 9) {
+                        lblTurn.setText("Game Over");
+                        DisableAll();
+                    }
+                }
+
+            }
+        });
+        add(btn6);
+
+        lbl6 = new JLabel("6");
+        lbl6.setBounds(375,225,150,75);
+        lbl6.setFont(new Font("Verdana",Font.PLAIN,24));
+        lbl6.setForeground(Color.BLACK);
+        lbl6.setHorizontalAlignment(JLabel.CENTER);
+        lbl6.setVerticalAlignment(JLabel.CENTER);
+        lbl6.setOpaque(true);
+        add(lbl6);
+
+
+
+        btn7 = new JButton("Play Here");
+        btn7.setBounds(75,450,150,75);
+        btn7.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                if (turn == "X"){
+                    lbl7.setText("X");
+                    turn = "O";
+                    lblTurn.setText("Player O's turn");
+                } else if (turn == "O"){
+                    lbl7.setText("O");
+                    turn = "X";
+                    lblTurn.setText("Player X's turn");
+                }
+                CheckWinner();
+                if (!gameWon) {
+                    plays++;
+                    if (plays >= 9) {
+                        lblTurn.setText("Game Over");
+                        DisableAll();
+                    }
+                }
+
+            }
+        });
+        add(btn7);
+
+        lbl7 = new JLabel("7");
+        lbl7.setBounds(75,375,150,75);
+        lbl7.setFont(new Font("Verdana",Font.PLAIN,24));
+        lbl7.setForeground(Color.BLACK);
+        lbl7.setHorizontalAlignment(JLabel.CENTER);
+        lbl7.setVerticalAlignment(JLabel.CENTER);
+        lbl7.setOpaque(true);
+        add(lbl7);
+
+
+        btn8 = new JButton("Play Here");
+        btn8.setBounds(225,450,150,75);
+        btn8.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                if (turn == "X"){
+                    lbl8.setText("X");
+                    turn = "O";
+                    lblTurn.setText("Player O's turn");
+                } else if (turn == "O"){
+                    lbl8.setText("O");
+                    turn = "X";
+                    lblTurn.setText("Player X's turn");
+                }
+                CheckWinner();
+                if (!gameWon) {
+                    plays++;
+                    if (plays >= 9) {
+                        lblTurn.setText("Game Over");
+                        DisableAll();
+                    }
+                }
+
+            }
+        });
+        add(btn8);
+
+        lbl8 = new JLabel("8");
+        lbl8.setBounds(225,375,150,75);
+        lbl8.setFont(new Font("Verdana",Font.PLAIN,24));
+        lbl8.setForeground(Color.BLACK);
+        lbl8.setHorizontalAlignment(JLabel.CENTER);
+        lbl8.setVerticalAlignment(JLabel.CENTER);
+        lbl8.setOpaque(true);
+        add(lbl8);
+
+
+        btn9 = new JButton("Play Here");
+        btn9.setBounds(375,450,150,75);
+        btn9.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                if (turn == "X"){
+                    lbl9.setText("X");
+                    turn = "O";
+                    lblTurn.setText("Player O's turn");
+                } else if (turn == "O"){
+                    lbl9.setText("O");
+                    turn = "X";
+                    lblTurn.setText("Player X's turn");
+                }
+                CheckWinner();
+                if (!gameWon) {
+                    plays++;
+                    if (plays >= 9) {
+                        lblTurn.setText("Game Over");
+                        DisableAll();
+                    }
+                }
+
+            }
+        });
+        add(btn9);
+
+        lbl9 = new JLabel("9");
+        lbl9.setBounds(375,375,150,75);
+        lbl9.setFont(new Font("Verdana",Font.PLAIN,24));
+        lbl9.setForeground(Color.BLACK);
+        lbl9.setHorizontalAlignment(JLabel.CENTER);
+        lbl9.setVerticalAlignment(JLabel.CENTER);
+        lbl9.setOpaque(true);
+        add(lbl9);
+
+        btnReset = new JButton("Reset");
+        btnReset.setBounds(5,5,100,50);
+        btnReset.setFont(new Font("Verdana",Font.PLAIN,24));
+        btnReset.setForeground(Color.BLACK);
+        btnReset.setHorizontalAlignment(JLabel.CENTER);
+        btnReset.setVerticalAlignment(JLabel.CENTER);
+        btnReset.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                Reset();
+            }
+        });
+        add(btnReset);
+    }
+
+    private void Reset(){
+        lbl1.setText("1");
+        lbl2.setText("2");
+        lbl3.setText("3");
+        lbl4.setText("4");
+        lbl5.setText("5");
+        lbl6.setText("6");
+        lbl7.setText("7");
+        lbl8.setText("8");
+        lbl9.setText("9");
+        lblTurn.setText("Player X's turn");
+        turn = "X";
+        plays = 0;
+        gameWon = false;
+        btn1.setEnabled(true);
+        btn2.setEnabled(true);
+        btn3.setEnabled(true);
+        btn4.setEnabled(true);
+        btn5.setEnabled(true);
+        btn6.setEnabled(true);
+        btn7.setEnabled(true);
+        btn8.setEnabled(true);
+        btn9.setEnabled(true);
+    }
+
+    private void CheckWinner(){
+        if (lbl1.getText().equals(lbl2.getText()) && lbl2.getText().equals(lbl3.getText())){
+            lblTurn.setText("Player " + lbl1.getText() + " wins!");
+            gameWon = true;
+            DisableAll();
+        } else if (lbl4.getText().equals(lbl5.getText()) && lbl5.getText().equals(lbl6.getText())){
+            lblTurn.setText("Player " + lbl4.getText() + " wins!");
+            gameWon = true;
+            DisableAll();
+        } else if (lbl7.getText().equals(lbl8.getText()) && lbl8.getText().equals(lbl9.getText())){
+            lblTurn.setText("Player " + lbl7.getText() + " wins!");
+            gameWon = true;
+            DisableAll();
+        } else if (lbl1.getText().equals(lbl4.getText()) && lbl4.getText().equals(lbl7.getText())){
+            lblTurn.setText("Player " + lbl1.getText() + " wins!");
+            gameWon = true;
+            DisableAll();
+        } else if (lbl2.getText().equals(lbl5.getText()) && lbl5.getText().equals(lbl8.getText())){
+            lblTurn.setText("Player " + lbl2.getText() + " wins!");
+            gameWon = true;
+            DisableAll();
+        } else if (lbl3.getText().equals(lbl6.getText()) && lbl6.getText().equals(lbl9.getText())){
+            lblTurn.setText("Player " + lbl3.getText() + " wins!");
+            gameWon = true;
+            DisableAll();
+        } else if (lbl1.getText().equals(lbl5.getText()) && lbl5.getText().equals(lbl9.getText())){
+            lblTurn.setText("Player " + lbl1.getText() + " wins!");
+            gameWon = true;
+            DisableAll();
+        } else if (lbl3.getText().equals(lbl5.getText()) && lbl5.getText().equals(lbl7.getText())){
+            lblTurn.setText("Player " + lbl3.getText() + " wins!");
+            gameWon = true;
+            DisableAll();
+        }
+    }
+
+    private void DisableAll() {
+        btn1.setEnabled(false);
+        btn2.setEnabled(false);
+        btn3.setEnabled(false);
+        btn4.setEnabled(false);
+        btn5.setEnabled(false);
+        btn6.setEnabled(false);
+        btn7.setEnabled(false);
+        btn8.setEnabled(false);
+        btn9.setEnabled(false);
+    }
+
+
+
+    public static void main(String[] args){
+        TicTacToe game = new TicTacToe();
+        System.out.println("Starting game...");
+    }
+}
